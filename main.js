@@ -1,4 +1,5 @@
 // Pastikan jalur (path) ke folder modules sudah benar
+import { initTiktok } from './modules/tiktok.js';
 import { initStory } from './modules/story.js';
 import { initEcom } from './modules/ecom.js';
 
@@ -14,13 +15,13 @@ buttons.forEach(btn => {
         document.getElementById(target).classList.remove('hidden');
 
         // Jalankan fungsi berdasarkan menu yang diklik
-        if (target === 'story') {
-            initStory();
-        } else if (target === 'ecom') {
-            initEcom();
+        if (target === 'tiktok-v2') initTiktok();
+        if (target === 'story') initStory();
+        if (target === 'ecom') initEcom();
         }
     });
 });
 
 // Jalankan fitur default saat halaman pertama kali dimuat
 initStory();
+
