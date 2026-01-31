@@ -1,19 +1,18 @@
-const mainContent = document.querySelector('#content-area');
-const navButtons = document.querySelectorAll('#sidebar button');
+import { initStory } from './modules/story.js';
+import { initEcom } from './modules/ecom.js'; // Pastikan baris ini ada
 
-navButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const target = btn.getAttribute('data-target');
-    loadFeature(target);
-  });
+const buttons = document.querySelectorAll('.nav-btn');
+const sections = document.querySelectorAll('.content-box');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        sections.forEach(s => s.classList.add('hidden'));
+        document.getElementById(target).classList.remove('hidden');
+
+        if (target === 'story') initStory();
+        if (target === 'ecom') initEcom(); // Panggil fungsi ecom di sini
+    });
 });
 
-function loadFeature(feature) {
-  // Logika untuk mengganti UI berdasarkan fitur yang dipilih
-  if (feature === 'story-gen') {
-    mainContent.innerHTML = `<h3>📖 Story Generator</h3>`;
-  } else if (feature === 'ecom-tool') {
-    mainContent.innerHTML = `<h3>🛒 E-commerce Content</h3>`;
-  }
-  // ... dan seterusnya
-}
+initStory();
