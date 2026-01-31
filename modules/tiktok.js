@@ -1,4 +1,5 @@
 // modules/tiktok.js
+import { panggilGemini } from './api.js'; // Import fungsi API
 export function initTiktok() {
     const btnGen = document.querySelector('#btn-tiktok-gen');
     const inputProduct = document.querySelector('#tiktok-input');
